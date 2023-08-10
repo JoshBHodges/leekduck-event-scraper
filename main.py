@@ -38,7 +38,7 @@ def createCal(communityDays):
         calender.events.add(e)
     
     # print(calender.events)
-    with open('dist/community_day.ics','w') as my_file:
+    with open('calendars/community_day.ics','w') as my_file:
         my_file.writelines(calender.serialize_iter())
 
 
