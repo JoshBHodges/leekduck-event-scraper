@@ -43,19 +43,11 @@ jobs:
       id: date
       run: echo "date=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
 
-    - name: Determine next semver patch version
-      uses: reecetech/version-increment@2022.10.3
-      id: version
-      with:
-        scheme: semver
-
     - name: Create a new patch release with the new calendar fragment
       uses: softprops/action-gh-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        name: ${{ steps.version.outputs.v-version }}
-        tag_name: ${{ steps.version.outputs.v-version }}
         files: calendars/*
         fail_on_unmatched_files: true
         body: "🕒 This release was [automatically generated and released](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) at ${{ steps.date.outputs.date }}."
