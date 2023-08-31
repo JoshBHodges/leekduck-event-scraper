@@ -33,6 +33,7 @@ def createCal(communityDays):
     for event in communityDays:
         e = Event()
         e.name = event["name"]
+        e.location = "London"
         e.begin = event["start"]
         e.end = event["end"]
         calender.events.add(e)
